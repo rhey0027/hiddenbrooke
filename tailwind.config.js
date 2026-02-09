@@ -1,6 +1,9 @@
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
+import tailwindScrollbar from 'tailwind-scrollbar'
+
 module.exports = {
+  
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -15,5 +18,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    tailwindScrollbar,
+  ]
 }
