@@ -16,7 +16,10 @@ const Notfound = () => {
         <code className="font-semibold text-red-800 text-2xl px-2 text-center mb-4 mt-10 animate-pulse">
           This page is under development right now
         </code>
-        <p className="font-medium">Sorry for the inconvenience</p>
+        <p className="font-medium text-lg">Sorry for the inconvenience</p>
+        <p className="font-medium mt-20">
+          Click nyo po ang Home Button pra bumalik sa Homepage. Salamat Po.
+        </p>
       </div>
       <div className="flex items-center justify-center mt-20">
         <Link href="/">

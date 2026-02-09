@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/nav";
-import AnnouncementBar from "@/components/Annoucebar";
-// import Carousel from "@/components/carousel";
+
 import PricingModal from "@/components/pricing";
 import MapSection from "@/components/map-section";
 import Footer from "@/components/footer";
 import { ArrowDownCircle } from "lucide-react";
 import CarouselWindowResponsive from "@/components/carousel-window";
+import AnnouncementBar from "@/components/Annoucebar";
 
 export default function Home() {
   const [isPricingOpen, setIsPricingOpen] = useState(false);
