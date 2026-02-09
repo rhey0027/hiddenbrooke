@@ -17,7 +17,7 @@ const Notfound = () => {
           This page is under development right now
         </code>
         <p className="font-medium text-lg">Sorry for the inconvenience</p>
-        <p className="font-medium mt-20">
+        <p className="font-medium mt-20 text-center">
           Click nyo po ang Home Button pra bumalik sa Homepage. Salamat Po.
         </p>
       </div>
