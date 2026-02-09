@@ -19,9 +19,9 @@ const defaultIcon = () => {
   };
   delete proto._getIconUrl;
   Icon.Default.mergeOptions({
-    iconRetinaUrl: "/leaflet/images/marker-icon-2x.png",
-    iconUrl: "/leaflet/images/marker-icon.png",
-    shadowUrl: "/leaflet/images/marker-shadow.png",
+    iconRetinaUrl: "/images/marker-icon-2x.png",
+    iconUrl: "/images/marker-icon.png",
+    shadowUrl: "/images/marker-shadow.png",
   });
 };
 const customMarkerIcon = L.icon({
