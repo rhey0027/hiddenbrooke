@@ -113,7 +113,7 @@ const PricingModal = ({ isOpen, onClose }: PricingModalProps) => {
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
-                  Pricing for Set B
+                  Pricing for Set A
                 </button>
                 <button
                   onClick={() => setSelectedSeason("high")}
