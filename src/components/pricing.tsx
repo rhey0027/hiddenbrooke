@@ -82,11 +82,11 @@ const PricingModal = ({ isOpen, onClose }: PricingModalProps) => {
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
-            className="fixed top-20 md:inset-x-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-linear-to-br from-white/95 to-blue-50/95 backdrop-blur-lg rounded-2xl shadow-2xl z-50 max-w-4xl w-full md:w-auto"
+            className="fixed top-2 md:inset-x-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 bg-linear-to-br from-white/95 to-blue-50/95 backdrop-blur-lg rounded-2xl shadow-2xl z-50 max-w-4xl w-full md:w-auto"
           >
             <div className="p-6 md:p-8 ">
               {/* Header */}
-              <div className="flex justify-between items-center mb-8">
+              <div className="flex justify-between items-center mb-3">
                 <div>
                   <h2 className="text-3xl font-bold text-gray-900">
                     Room Rates & Packages
@@ -104,7 +104,7 @@ const PricingModal = ({ isOpen, onClose }: PricingModalProps) => {
               </div>
 
               {/* Season Selector */}
-              <div className="flex gap-4 mb-8 ">
+              <div className="flex gap-4 mb-2 ">
                 <button
                   onClick={() => setSelectedSeason("low")}
                   className={`px-6 py-3 rounded-lg font-semibold transition-all cursor-pointer ${
@@ -113,7 +113,7 @@ const PricingModal = ({ isOpen, onClose }: PricingModalProps) => {
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
-                  Pricing for Set A
+                  Pricing Set A
                 </button>
                 <button
                   onClick={() => setSelectedSeason("high")}
@@ -123,7 +123,7 @@ const PricingModal = ({ isOpen, onClose }: PricingModalProps) => {
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
                 >
-                  Pricing for Set B
+                  Pricing Set B
                 </button>
               </div>
 

@@ -19,7 +19,7 @@ const Footer = () => {
     { icon: <Mail size={20} />, email: "hiddenbrooke@gmail.com" },
     {
       icon: <MapPin size={20} />,
-      text: "Upper Bunguiao, waray-waray, Zamboanga City",
+      text: "Upper Bunguiao, Waray-Waray, Zamboanga City",
     },
   ];
 

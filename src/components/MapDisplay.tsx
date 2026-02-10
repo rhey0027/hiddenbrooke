@@ -28,7 +28,7 @@ export default function MapDisplay() {
       const customMarkerIcon = new L.Icon({
         iconUrl: "/images/brooke.png", // Your custom marker
         iconSize: [50, 50], // Adjust based on your image size
-        iconAnchor: [25, 50], // Point of the icon that corresponds to marker's location
+        iconAnchor: [25, 20], // Point of the icon that corresponds to marker's location
         popupAnchor: [0, -50], // Where popup opens relative to the icon
         className: "custom-marker-icon",
       });
@@ -65,7 +65,7 @@ export default function MapDisplay() {
   return (
     <MapContainer
       center={resortLocation}
-      zoom={15}
+      zoom={12}
       style={{ height: "500px", width: "100%" }}
       className="rounded-2xl shadow-2xl z-0"
       scrollWheelZoom={true}
@@ -83,7 +83,7 @@ export default function MapDisplay() {
           customIcon ||
           L.icon({
             iconUrl: "/images/brooke.png",
-            iconSize: [50, 50],
+            iconSize: [180, 180],
             iconAnchor: [25, 50],
           })
         }

@@ -52,7 +52,7 @@ export default function Home() {
 
       {/* Map Section */}
       <MapSection />
-
+      <div>{/* <PersistentReactionCounter /> */}</div>
       {/* Footer */}
       <Footer />
     </main>

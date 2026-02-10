@@ -9,7 +9,7 @@ const MapDisplay = dynamic(() => import("./MapDisplay"), {
       <div className="text-center">
         <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-emerald-600 mx-auto mb-6"></div>
         <p className="text-gray-800 font-semibold text-lg">
-          Loading Paradise Map...
+          Loading Hiddenbrooke Resort Map...
         </p>
         <p className="text-gray-600 mt-2">
           Showing you the way to HiddenBrooke Resort
@@ -54,7 +54,7 @@ export default function MapSection() {
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4 p-4 bg-blue-50 rounded-xl">
-                  <Car className="w-6 h-6 text-blue-600 mt-1" />
+                  <Car className="w-8 h-8 text-blue-600 mt-1" />
                   <div>
                     <h3 className="font-bold text-lg text-gray-800 mb-1">
                       From City Proper
@@ -131,8 +131,10 @@ export default function MapSection() {
               <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
                 <div className="p-6 bg-linear-to-r from-emerald-600 to-blue-600 text-white">
                   <h3 className="text-2xl font-bold mb-2">Live Location Map</h3>
-                  <p className="opacity-90">
-                    Interactive map showing exact location
+                  <p className="opacity-90 font-light text-sm">
+                    Interactive map showing{" "}
+                    <span className="font-semibold">Hiddenbrooke Resort</span>{" "}
+                    exact location
                   </p>
                 </div>
                 <div className="p-2">
@@ -142,7 +144,7 @@ export default function MapSection() {
                   <div className="flex items-center justify-between text-sm text-gray-600">
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
-                      <span>Custom Marker</span>
+                      <span>Hiddenbrooke Marker</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
@@ -166,7 +168,7 @@ export default function MapSection() {
                 <span className="text-2xl">📍</span>
               </div>
               <h4 className="font-bold text-lg text-gray-800 mb-2">Bunguiao</h4>
-              <p className="text-gray-600">Where the resort is nestled</p>
+              <p className="text-gray-600">Local Community Area</p>
             </div>
 
             <div className="text-center p-6 bg-linear-to-br from-emerald-50 to-white rounded-xl border border-emerald-100">
@@ -176,7 +178,7 @@ export default function MapSection() {
               <h4 className="font-bold text-lg text-gray-800 mb-2">
                 Waray-Waray
               </h4>
-              <p className="text-gray-600">Local community area</p>
+              <p className="text-gray-600"> Where the resort is nestled</p>
             </div>
 
             <div className="text-center p-6 bg-linear-to-br from-amber-50 to-white rounded-xl border border-amber-100">
@@ -194,10 +196,10 @@ export default function MapSection() {
         {/* Contact CTA */}
         <div className="mt-16 text-center">
           <div className="inline-block bg-linear-to-r from-emerald-500 to-blue-500 text-white px-8 py-4 rounded-full shadow-lg">
-            <p className="text-lg font-semibold">
+            <p className="text-md font-semibold">
               Need turn-by-turn directions?
             </p>
-            <p className="opacity-90">Tawag or Text na sa 0975 - 856 - 9236</p>
+            <p className="opacity-90">Tawag or Text na sa 0975-856-9236</p>
           </div>
         </div>
       </div>

@@ -41,6 +41,15 @@ const CarouselWindowResponsive = ({
     "/images/pic18.jpg",
     "/images/pic19.jpg",
     "/images/pic20.jpg",
+    "/images/pic21.jpg",
+    "/images/pic22.jpg",
+    "/images/pic23.jpg",
+    "/images/pic24.jpg",
+    "/images/pic25.jpg",
+    "/images/pic26.jpg",
+    "/images/pic27.jpg",
+    "/images/pic28.jpg",
+    "/images/pic29.jpg",
   ];
   const images = customImages?.length ? customImages : LOCAL_IMAGES;
 
