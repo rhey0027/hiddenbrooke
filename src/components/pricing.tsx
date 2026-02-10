@@ -128,43 +128,47 @@ const PricingModal = ({ isOpen, onClose }: PricingModalProps) => {
               </div>
 
               {/* Pricing Grid */}
-              <div className="max-h-[70vh] overflow-y-auto p-6 sm:p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {pricingData[selectedSeason].map((room, index) => (
-                    <motion.div
-                      key={room.type}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 shadow-lg hover:shadow-xl transition-shadow"
-                    >
-                      <div className="flex justify-between items-start mb-4">
-                        <h3 className="text-xl font-bold text-gray-900">
-                          {room.type}
-                        </h3>
-                        <div className="text-right">
-                          <span className="text-3xl font-bold text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-teal-600">
-                            P{room.price}
-                          </span>
-                          <p className="text-sm text-gray-500">hiddenbrooke</p>
+              <div className="flex flex-col h-full">
+                <div className="overflow-y-auto grow p-6 sm:p-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {pricingData[selectedSeason].map((room, index) => (
+                      <motion.div
+                        key={room.type}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 shadow-lg hover:shadow-xl transition-shadow"
+                      >
+                        <div className="flex justify-between items-start mb-4">
+                          <h3 className="text-xl font-bold text-gray-900">
+                            {room.type}
+                          </h3>
+                          <div className="text-right">
+                            <span className="text-3xl font-bold text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-teal-600">
+                              P{room.price}
+                            </span>
+                            <p className="text-sm text-gray-500">
+                              hiddenbrooke
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <ul className="space-y-2 mb-6">
-                        {room.features.map((feature, idx) => (
-                          <li
-                            key={idx}
-                            className="flex items-center text-gray-700"
-                          >
-                            <div className="w-2 h-2 bg-linear-to-r from-blue-400 to-teal-400 rounded-full mr-3"></div>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                      <button className="w-full py-3 bg-linear-to-r from-blue-500 to-teal-500 text-white font-semibold rounded-lg hover:shadow-lg hover:scale-[1.02] transition-all cursor-pointer">
-                        View More
-                      </button>
-                    </motion.div>
-                  ))}
+                        <ul className="space-y-2 mb-6">
+                          {room.features.map((feature, idx) => (
+                            <li
+                              key={idx}
+                              className="flex items-center text-gray-700"
+                            >
+                              <div className="w-2 h-2 bg-linear-to-r from-blue-400 to-teal-400 rounded-full mr-3"></div>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                        <button className="w-full py-3 bg-linear-to-r from-blue-500 to-teal-500 text-white font-semibold rounded-lg hover:shadow-lg hover:scale-[1.02] transition-all cursor-pointer">
+                          View More
+                        </button>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
               </div>
 

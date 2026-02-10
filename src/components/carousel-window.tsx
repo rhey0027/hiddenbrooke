@@ -107,7 +107,7 @@ const CarouselWindowResponsive = ({
 
     const interval = setInterval(() => {
       nextSlide();
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, nextSlide, images.length]);
