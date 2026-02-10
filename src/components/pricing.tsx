@@ -128,8 +128,8 @@ const PricingModal = ({ isOpen, onClose }: PricingModalProps) => {
               </div>
 
               {/* Pricing Grid */}
-              <div className="flex flex-col h-full">
-                <div className="overflow-y-auto grow p-6 sm:p-8">
+              <div className="flex flex-col ">
+                <div className="max-h-[50vh] overflow-y-auto grow p-6 sm:p-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {pricingData[selectedSeason].map((room, index) => (
                       <motion.div
