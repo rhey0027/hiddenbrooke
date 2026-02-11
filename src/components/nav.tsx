@@ -24,7 +24,7 @@ const Navbar = () => {
               <div className="w-full h-full bg-linear-to-br from-blue-400 to-teal-300 flex items-center justify-center">
                 <span className="text-white font-bold text-xl">
                   <Image
-                    src="/images/brooke.png"
+                    src="/logo/brooke.png"
                     width={50}
                     height={50}
                     alt="log"
