@@ -7,13 +7,13 @@ import { Droplets } from "lucide-react";
 
 const AnnouncementBar = () => {
   return (
-    <div className="fixed top-22 left-0 right-0 z-40 overflow-hidden bg-linear-to-r from-violet-800/90 via-orange-800/80 to-yellow-400/90 py-2 shadow-lg">
+    <div className="fixed top-22 left-0 right-0 z-40 overflow-hidden bg-linear-to-r from-violet-800/90 via-orange-800/80 to-yellow-400/90 py-1 shadow-lg font-lighter text-xs">
       <motion.div
         className="flex items-center justify-center space-x-4 whitespace-nowrap"
         initial={{ x: "100%" }}
         animate={{ x: "-100%" }}
         transition={{
-          duration: 25,
+          duration: 35,
           repeat: Infinity,
           ease: "linear",
         }}

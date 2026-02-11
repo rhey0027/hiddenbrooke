@@ -6,7 +6,7 @@ export default function WaterLoader() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 5000);
+    const timer = setTimeout(() => setLoading(false), 3000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -23,10 +23,10 @@ export default function WaterLoader() {
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{
-                duration: 5,
+                duration: 3,
                 ease: "easeIn",
                 repeat: Infinity,
-                repeatDelay: 1.5,
+                repeatDelay: 0.5,
               }}
               className="absolute w-4 h-6 bg-blue-400 rounded-full"
               style={{ borderRadius: "50% 50% 50% 50% / 100% 100% 30% 30%" }}
@@ -37,9 +37,9 @@ export default function WaterLoader() {
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: [0, 1.5, 2], opacity: [0, 0.5, 0] }}
               transition={{
-                duration: 2.1,
+                duration: 1.5,
                 repeat: Infinity,
-                delay: 0.6,
+                delay: 0.3,
                 ease: "easeOut",
               }}
               className="absolute w-12 h-4 border-2 border-blue-300 rounded-[100%]"
