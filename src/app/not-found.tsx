@@ -6,7 +6,7 @@ const Notfound = () => {
     <div className="min-h-screen bg-linear-to-br from-blue-300 to-violet-800">
       <span className="flex items-center justify-center pt-35">
         <Image
-          src="/images/brooke.png"
+          src="/logo/brooke.png"
           width={100}
           height={70}
           alt="logo"
