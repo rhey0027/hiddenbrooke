@@ -1,16 +1,14 @@
+"use client";
+
 import { Menu } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 
+import { navItems } from "@/def/definition";
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navItems = [
-    { label: "Home", href: "#" },
-    { label: "Rooms", href: "/not-found" },
-    { label: "Amenities", href: "/not-found" },
-    { label: "Events", href: "/not-found" },
-  ];
   // fixed top-0 left-0 right-0 z-50 bg-linear-to-r from-blue-900/90 via-teal-900/80 to-emerald-900/90 backdrop-blur-md shadow-xl
 
   return (

@@ -11,6 +11,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+
       fontFamily: {
         // 'script' becomes your new utility class: font-script
        
