@@ -26,7 +26,7 @@ export default function MapDisplay() {
 
       // Create CUSTOM icon for HiddenBrooke Resort
       const customMarkerIcon = new L.Icon({
-        iconUrl: "/images/brooke.png", // Your custom marker
+        iconUrl: "/logo/brooke.png", // Your custom marker
         iconSize: [50, 50], // Adjust based on your image size
         iconAnchor: [25, 20], // Point of the icon that corresponds to marker's location
         popupAnchor: [0, -50], // Where popup opens relative to the icon
@@ -82,7 +82,7 @@ export default function MapDisplay() {
         icon={
           customIcon ||
           L.icon({
-            iconUrl: "/images/brooke.png",
+            iconUrl: "/logo/brooke.png",
             iconSize: [180, 180],
             iconAnchor: [25, 50],
           })
