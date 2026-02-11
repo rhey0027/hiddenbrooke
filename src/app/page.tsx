@@ -12,12 +12,14 @@ import CarouselWindowResponsive from "@/components/carousel-window";
 
 import MapSection from "@/components/MapSection";
 import AnnouncementBar from "@/components/Annoucebar";
+import WaterLoader from "@/components/loader";
 
 export default function Home() {
   const [isPricingOpen, setIsPricingOpen] = useState(false);
 
   return (
     <main className="min-h-screen bg-linear-to-br from-blue-50 via-white to-teal-50">
+      <WaterLoader />
       <Navbar />
       <AnnouncementBar />
       {/* Hero Section with Carousel */}

@@ -5,14 +5,13 @@ import { useState } from "react";
 import Image from "next/image";
 
 import { navItems } from "@/def/definition";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // fixed top-0 left-0 right-0 z-50 bg-linear-to-r from-blue-900/90 via-teal-900/80 to-emerald-900/90 backdrop-blur-md shadow-xl
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-linear-to-r from-blue-900/90 via-teal-900/80 to-emerald-900/90 backdrop-blur-md shadow-xl">
+    <nav className="fixed top-0 left-0 right-0 z-30 bg-linear-to-r from-blue-900/90 via-teal-900/80 to-emerald-900/90 backdrop-blur-md shadow-xl">
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo and Resort Name */}
@@ -25,7 +24,7 @@ const Navbar = () => {
                     src="/logo/brooke.png"
                     width={50}
                     height={50}
-                    alt="log"
+                    alt="logo"
                   />
                 </span>
               </div>
@@ -43,14 +42,14 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
                 className="text-blue-100 hover:text-white font-medium transition-colors duration-300 relative group"
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-blue-300 to-teal-300 group-hover:w-full transition-all duration-300"></span>
-              </a>
+              </Link>
             ))}
             <button className="px-6 py-2 bg-linear-to-r from-blue-500 to-teal-500 text-white font-semibold rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300">
               Under Development
@@ -71,14 +70,14 @@ const Navbar = () => {
           <div className="md:hidden mt-4 pb-4 animate-fadeIn">
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
                   href={item.href}
                   className="text-blue-100 hover:text-white font-medium py-2 px-4 hover:bg-white/10 rounded-lg transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
               <button className="px-6 py-3 bg-linear-to-r from-blue-500 to-teal-500 text-white font-semibold rounded-full hover:shadow-lg transition-all">
                 Under Development

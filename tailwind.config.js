@@ -11,10 +11,18 @@ module.exports = {
   ],
   theme: {
     extend: {
-
+keyframes: {
+  drop: {
+       '0%, 100%': { borderRadius: '50% 50% 50% 50% / 50% 50% 50% 50%' },
+          '33%': { borderRadius: '63% 37% 54% 46% / 55% 48% 52% 45%' },
+          '66%': { borderRadius: '40% 60% 42% 58% / 41% 51% 49% 59%' },
+  },
+},
+animation: {
+'water-drop': 'drop 3s ease-in-out infinite',
+},
       fontFamily: {
         // 'script' becomes your new utility class: font-script
-       
         // 'sans' can be extended too if needed globally
       },
     },

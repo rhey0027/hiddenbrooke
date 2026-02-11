@@ -10,47 +10,13 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-
-interface CarouselWindowResponsiveProps {
-  images?: string[];
-  size?: "small" | "medium" | "large";
-}
+import { CarouselWindowResponsiveProps } from "@/types/types";
+import { LOCAL_IMAGES } from "@/def/definition";
 
 const CarouselWindowResponsive = ({
   images: customImages,
   size = "large",
 }: CarouselWindowResponsiveProps) => {
-  const LOCAL_IMAGES = [
-    "/images/pic1.jpg",
-    "/images/pic2.jpg",
-    "/images/pic3.jpg",
-    "/images/pic4.jpg",
-    "/images/pic5.jpg",
-    "/images/pic6.jpg",
-    "/images/pic7.jpg",
-    "/images/pic8.jpg",
-    "/images/pic9.jpg",
-    "/images/pic10.jpg",
-    "/images/pic11.jpg",
-    "/images/pic12.jpg",
-    "/images/pic13.jpg",
-    "/images/pic14.jpg",
-    "/images/pic15.jpg",
-    "/images/pic16.jpg",
-    "/images/pic17.jpg",
-    "/images/pic18.jpg",
-    "/images/pic19.jpg",
-    "/images/pic20.jpg",
-    "/images/pic21.jpg",
-    "/images/pic22.jpg",
-    "/images/pic23.jpg",
-    "/images/pic24.jpg",
-    "/images/pic25.jpg",
-    "/images/pic26.jpg",
-    "/images/pic27.jpg",
-    "/images/pic28.jpg",
-    "/images/pic29.jpg",
-  ];
   const images = customImages?.length ? customImages : LOCAL_IMAGES;
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -72,7 +38,7 @@ const CarouselWindowResponsive = ({
     large: {
       container: "max-w-7xl h-180",
       arrows: "p-3",
-      iconSize: 24,
+      iconSize: 34,
     },
   };
 
@@ -128,11 +94,11 @@ const CarouselWindowResponsive = ({
   return (
     <div
       className={`
-        relative mx-auto mt-24 rounded-xl overflow-hidden shadow-xl border border-gray-200
+        relative mx-auto mt-18 rounded-xl overflow-hidden shadow-xl border border-gray-200
         transition-all duration-300 ease-in-out
         ${
           isFullscreen
-            ? "fixed inset-4 z-50 max-w-none w-auto h-auto rounded-none"
+            ? "fixed inset-0 z-100 w-screen h-screen rounded-none bg-sky-500"
             : `${config.container}`
         }
       `}
@@ -171,7 +137,7 @@ const CarouselWindowResponsive = ({
           <div className="absolute inset-0 flex items-center justify-between px-4">
             <button
               onClick={prevSlide}
-              className="bg-white/80 hover:bg-white text-gray-800 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg z-20"
+              className="bg-white/60 hover:bg-sky-400 text-violet-800 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg z-20 cursor-pointer"
               style={{ padding: config.arrows }}
               aria-label="Previous slide"
             >
@@ -179,7 +145,7 @@ const CarouselWindowResponsive = ({
             </button>
             <button
               onClick={nextSlide}
-              className="bg-white/80 hover:bg-white text-gray-800 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg z-20"
+              className="bg-white/60 hover:bg-sky-400 text-violet-800 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg z-20 cursor-pointer "
               style={{ padding: config.arrows }}
               aria-label="Next slide"
             >
@@ -188,17 +154,17 @@ const CarouselWindowResponsive = ({
           </div>
 
           {/* Top Controls */}
-          <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-20">
+          <div className="absolute top-4 left-8 right-8 flex justify-between items-center z-20">
             {/* Slide Counter */}
             <div className="bg-black/50 text-white px-3 py-1.5 rounded-full text-sm backdrop-blur-sm">
-              {currentIndex + 1} / {images.length}
+              {currentIndex + 1} : {images.length}
             </div>
 
             {/* Control Buttons */}
-            <div className="flex gap-2">
+            <div className="flex gap-4">
               <button
                 onClick={toggleAutoPlay}
-                className="bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all hover:scale-110 backdrop-blur-sm"
+                className="bg-white hover:bg-green-500 text-red-700 rounded-full p-2 transition-all hover:scale-110 backdrop-blur-sm cursor-pointer"
                 aria-label={
                   isAutoPlaying ? "Pause slideshow" : "Play slideshow"
                 }
@@ -207,7 +173,7 @@ const CarouselWindowResponsive = ({
               </button>
               <button
                 onClick={toggleFullscreen}
-                className="bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all hover:scale-110 backdrop-blur-sm"
+                className="bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all hover:scale-110 backdrop-blur-sm cursor-pointer"
                 aria-label={
                   isFullscreen ? "Exit fullscreen" : "Enter fullscreen"
                 }
@@ -227,7 +193,7 @@ const CarouselWindowResponsive = ({
                   transition-all duration-300 rounded-full
                   ${
                     index === currentIndex
-                      ? "bg-white w-8 h-2"
+                      ? "bg-orange-500 w-8 h-2"
                       : "bg-white/50 w-2 h-2 hover:bg-white/80"
                   }
                 `}
@@ -273,9 +239,10 @@ const CarouselWindowResponsive = ({
 
       {/* Fullscreen overlay text */}
       {isFullscreen && (
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-6 py-3 rounded-full backdrop-blur-sm z-20">
+        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-6 py-3 rounded-full backdrop-blur-sm z-20">
           <span className="text-sm">
-            Press ESC or click the maximize button to exit
+            Press ESC key or man click el maximize button para sale, Gracias!
+            {/* Press ESC or click the maximize button to exit */}
           </span>
         </div>
       )}
