@@ -247,7 +247,7 @@ justify-center p-4"
             )}
 
             {/* Additional Info */}
-            <div className="mt-8 p-4 bg-linear-to-r from-blue-50 to-teal-50 rounded-xl border border-blue-100">
+            <div className="mt-4 p-4 bg-linear-to-r from-blue-50 to-teal-50 rounded-xl border border-blue-100">
               <p className="text-center text-gray-700">
                 * Walk-ins are always welcome on a first come first serve basis.
                 <br />* For overnights, we recomment a reservation with 50%
