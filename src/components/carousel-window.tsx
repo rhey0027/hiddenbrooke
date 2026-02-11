@@ -154,7 +154,7 @@ const CarouselWindowResponsive = ({
               fill
               className="object-cover"
               priority={currentIndex === 0}
-              quality={isFullscreen ? 90 : 80}
+              quality={isFullscreen ? 75 : 80}
               sizes={
                 isFullscreen ? "100vw" : "(max-width: 768px) 100vw, 1024px"
               }
