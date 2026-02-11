@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 interface PricingModalProps {
@@ -10,59 +11,94 @@ interface PricingModalProps {
 }
 
 const PricingModal = ({ isOpen, onClose }: PricingModalProps) => {
-  const [selectedSeason, setSelectedSeason] = useState<"low" | "high">("low");
+  // State for the Lightbox
+  const [selectedGallery, setSelectedGallery] = useState<string[] | null>(null);
+  const [photoIndex, setPhotoIndex] = useState(0);
+  // Gallery Navigation Functions
+  const nextSlide = () =>
+    setPhotoIndex((prev) => (prev + 1) % (selectedGallery?.length || 1));
+  const prevSlide = () =>
+    setPhotoIndex(
+      (prev) =>
+        (prev - 1 + (selectedGallery?.length || 1)) %
+        (selectedGallery?.length || 1),
+    );
 
-  const pricingData = {
-    low: [
-      {
-        type: "Resthouse",
-        price: "3,500",
-        features: ["Plus entrance fee", "8:00am - 5:00pm", "Daytime only"],
-      },
-      {
-        type: "Resthouse Overnight",
-        price: "6,500",
-        features: [
-          "Entrance fee included",
-          "Up to 15 pax/persons",
-          "2nd floor Included",
-          "With aircondition",
-        ],
-      },
-      {
-        type: "Nipa Hut",
-        price: "1,000",
-        features: ["Entrance fee included", "Up to 3 pax/persons", "Overnight"],
-      },
-      {
-        type: "Camping Tent",
-        price: "350",
-        features: ["Addional 100 for Entrance fee", "Up to 3 pax/persons"],
-      },
-    ],
-    high: [
-      {
-        type: "Cottages",
-        price: "700",
-        features: [],
-      },
-      {
-        type: "Gazebo",
-        price: "700",
-        features: [],
-      },
-      {
-        type: "Picnic Table",
-        price: 300,
-        features: [],
-      },
-      {
-        type: "Regular Table",
-        price: 200,
-        features: ["For 4 pax/persons"],
-      },
-    ],
-  };
+  const pricingData = [
+    {
+      id: 1,
+      type: "Resthouse Overnight",
+      price: "6,500",
+      features: [
+        "Entrance fee included",
+        "Up to 15 pax/persons",
+        "2nd floor Included",
+        "With aircondition",
+      ],
+      gallery: [
+        "/rooms/rh1.jpg",
+        "/rooms/rh2.jpg",
+        "/rooms/rh3.jpg",
+        "/rooms/rh4.jpg",
+        "/rooms/rh5.jpg",
+      ],
+    },
+    {
+      id: 2,
+      type: "Resthouse",
+      price: "3,500",
+      features: ["Plus entrance fee", "8:00am - 5:00pm", "Daytime only"],
+      gallery: [
+        "/rooms/rh1.jpg",
+        "/rooms/rh2.jpg",
+        "/rooms/rh3.jpg",
+        "/rooms/rh4.jpg",
+        "/rooms/rh5.jpg",
+      ],
+    },
+    {
+      id: 3,
+      type: "Nipa Hut",
+      price: "1,000",
+      features: ["Entrance fee included", "Up to 3 pax/persons", "Overnight"],
+      gallery: ["/rooms/nipa1.jpg", "/rooms/nipa2.jpg", "/rooms/nipa3.jpg"],
+    },
+    {
+      id: 4,
+      type: "Camping Tent",
+      price: "350",
+      features: ["Addional 100 for Entrance fee", "Up to 3 pax/persons"],
+      gallery: ["/rooms/tent.jpg"],
+    },
+    {
+      id: 5,
+      type: "Cottages",
+      price: "700",
+      features: ["wide and spacious", "cement floor"],
+      gallery: ["/rooms/cot.jpg", "/rooms/cot2.jpg"],
+    },
+    {
+      id: 6,
+      type: "Gazebo",
+      price: "700",
+      features: ["wider table"],
+      gallery: ["/rooms/gazebo.jpg", "/rooms/gazebo2.jpg"],
+    },
+    {
+      id: 7,
+      type: "Picnic Table",
+      price: 300,
+      features: ["comfortable"],
+      gallery: ["/rooms/table3.jpg"],
+    },
+    {
+      id: 8,
+      type: "Regular Table",
+      price: 200,
+      features: ["For 4 pax/persons"],
+      gallery: ["/rooms/tablenchair.jpg"],
+    },
+  ];
 
   return (
     <AnimatePresence>
@@ -92,7 +128,7 @@ const PricingModal = ({ isOpen, onClose }: PricingModalProps) => {
                     Room Rates & Packages
                   </h2>
                   <p className="text-gray-600 mt-2">
-                    All prices are per day/night in Php
+                    All prices are per day/night in 👉 php
                   </p>
                 </div>
                 <button
@@ -103,92 +139,127 @@ const PricingModal = ({ isOpen, onClose }: PricingModalProps) => {
                 </button>
               </div>
 
-              {/* Season Selector */}
-              <div className="flex gap-4 mb-2 ">
-                <button
-                  onClick={() => setSelectedSeason("low")}
-                  className={`px-6 py-3 rounded-lg font-semibold transition-all cursor-pointer ${
-                    selectedSeason === "low"
-                      ? "bg-linear-to-r from-blue-600 to-teal-600 text-white shadow-lg"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}
-                >
-                  Pricing Set A
-                </button>
-                <button
-                  onClick={() => setSelectedSeason("high")}
-                  className={`px-6 py-3 rounded-lg font-semibold transition-all cursor-pointer ${
-                    selectedSeason === "high"
-                      ? "bg-linear-to-r from-blue-600 to-teal-600 text-white shadow-lg"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}
-                >
-                  Pricing Set B
-                </button>
-              </div>
-
               {/* Pricing Grid */}
-              <div className="flex flex-col ">
-                <div className="max-h-[50vh] overflow-y-auto grow p-6 sm:p-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {pricingData[selectedSeason].map((room, index) => (
-                      <motion.div
-                        key={room.type}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 shadow-lg hover:shadow-xl transition-shadow"
-                      >
+              {/* 2. GRID OF 4 CARDS */}
+              <div className="grid grid-cols-1  gap-6">
+                <div className="max-h-[55vh] overflow-y-auto p-5">
+                  {pricingData.map((card) => (
+                    <div
+                      key={card.id}
+                      className="border border-gray-100 rounded-2xl
+p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition"
+                    >
+                      <div>
                         <div className="flex justify-between items-start mb-4">
-                          <h3 className="text-xl font-bold text-gray-900">
-                            {room.type}
+                          <h3
+                            className="text-xl font-bold text-gray-
+800"
+                          >
+                            {card.type}
                           </h3>
                           <div className="text-right">
-                            <span className="text-3xl font-bold text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-teal-600">
-                              P{room.price}
+                            <span className="text-4xl font-bold text-transparent bg-clip-text bg-linear-to-r from-emerald-600 to-blue-600">
+                              {card.price}
                             </span>
-                            <p className="text-sm text-gray-500">
+                            <p className="text-xs text-gray-400">
                               hiddenbrooke
                             </p>
                           </div>
                         </div>
-                        <ul className="space-y-2 mb-6">
-                          {room.features.map((feature, idx) => (
+                        <ul className="space-y-3 mb-6">
+                          {card.features.map((feat, i) => (
                             <li
-                              key={idx}
-                              className="flex items-center text-gray-700"
+                              key={i}
+                              className="flex items-center text-sm textgray-
+600"
                             >
-                              <div className="w-2 h-2 bg-linear-to-r from-blue-400 to-teal-400 rounded-full mr-3"></div>
-                              {feature}
+                              <span
+                                className="w-1.5 h-1.5 bg-cyan-400 rounded-full
+mr-3"
+                              />
+                              {feat}
                             </li>
                           ))}
                         </ul>
-                        <button className="w-full py-3 bg-linear-to-r from-blue-500 to-teal-500 text-white font-semibold rounded-lg hover:shadow-lg hover:scale-[1.02] transition-all cursor-pointer">
-                          View More
-                        </button>
-                      </motion.div>
-                    ))}
-                  </div>
+                      </div>
+                      {/* VIEW MORE BUTTON - Triggers the gallery */}
+                      <button
+                        onClick={() => {
+                          setSelectedGallery(card.gallery);
+                          setPhotoIndex(0);
+                        }}
+                        className="w-full py-3 bg-linear-to-br from-blue-800 via-blue-500 text-white font-semibold tracking-wider rounded-xl hover:opacity-90 transition shadow-md cursor-pointer
+active:scale-95"
+                      >
+                        View Images
+                      </button>
+                    </div>
+                  ))}
                 </div>
               </div>
-
-              {/* Additional Info */}
-              <div className="mt-8 p-4 bg-linear-to-r from-blue-50 to-teal-50 rounded-xl border border-blue-100">
-                <p className="text-center text-gray-700">
-                  * Walk-ins are always welcome on a first come first serve
-                  basis.
-                  <br />* For overnights, we recomment a reservation with 50%
-                  downpayment <br /> to lock-in your preferred date. <br />* For
-                  <span className="text-amber-700 font-light">
-                    {" "}
-                    bookings
-                  </span>{" "}
-                  and{" "}
-                  <span className="text-amber-700 font-light">inquiries </span>
-                  kindly call/text @ 0975-856-9236. Thank you! & have a
-                  wonderfull day!
-                </p>
+            </div>
+            {/* 3. THE LIGHTBOX POP-UP */}
+            {selectedGallery && (
+              <div
+                className="fixed inset-0 z-100 bg-black/85 flex items-center
+justify-center p-4"
+              >
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedGallery(null)}
+                  className="cursor-pointer absolute top-10 right-10 text-white hover:bg-white/10 p-2 rounded-full transition"
+                >
+                  <X size={40} />
+                </button>
+                {/* Left Arrow */}
+                {selectedGallery.length > 1 && (
+                  <button
+                    onClick={prevSlide}
+                    className="cursor-pointer absolute left-4 md:left-10 text-white p-2 hover:bg-white/10 rounded-full transition"
+                  >
+                    <ChevronLeft size={48} />
+                  </button>
+                )}
+                {/* Image Container */}
+                <div className="max-w-5xl w-full h-[80vh] flex items-center justify-center">
+                  <Image
+                    width={500}
+                    height={500}
+                    src={selectedGallery[photoIndex]}
+                    className="max-w-full max-h-full object-contain rounded-lg shadow-2xl animate-in fade-in zoom-in duration-300"
+                    alt="Gallery Preview"
+                  />
+                </div>
+                {/* Right Arrow */}
+                {selectedGallery.length > 1 && (
+                  <button
+                    onClick={nextSlide}
+                    className="cursor-pointer absolute right-4 md:right-10 text-white p-2 hover:bg-white/10 rounded-full transition"
+                  >
+                    <ChevronRight size={48} />
+                  </button>
+                )}
+                {/* Image Counter Indicator */}
+                <div className="absolute bottom-10 text-white font-medium">
+                  {photoIndex + 1} / {selectedGallery.length}
+                </div>
               </div>
+            )}
+
+            {/* Additional Info */}
+            <div className="mt-8 p-4 bg-linear-to-r from-blue-50 to-teal-50 rounded-xl border border-blue-100">
+              <p className="text-center text-gray-700">
+                * Walk-ins are always welcome on a first come first serve basis.
+                <br />* For overnights, we recomment a reservation with 50%
+                downpayment <br /> to lock-in your preferred date. <br />* For
+                <span className="text-amber-700 font-light">
+                  {" "}
+                  bookings
+                </span> and{" "}
+                <span className="text-amber-700 font-light">inquiries </span>
+                kindly call/text @ 0975-856-9236. Thank you! & have a wonderfull
+                day!
+              </p>
             </div>
           </motion.div>
         </>
