@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import { MapPin, Navigation, Car, Compass } from "lucide-react";
 
 // Dynamically import the map with no SSR
-const MapDisplay = dynamic(() => import("./map-display"), {
+const MapDisplay = dynamic(() => import("./MapDisplay"), {
   ssr: false,
   loading: () => (
     <div className="h-125 w-full bg-linear-to-br from-blue-100 to-emerald-100 rounded-2xl flex items-center justify-center">

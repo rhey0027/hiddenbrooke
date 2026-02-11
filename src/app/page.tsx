@@ -10,8 +10,8 @@ import Footer from "@/components/footer";
 import { ArrowDownCircle } from "lucide-react";
 import CarouselWindowResponsive from "@/components/carousel-window";
 
-import MapSection from "@/components/map-section";
-import AnnouncementBar from "@/components/annoucebar";
+import MapSection from "@/components/MapSection";
+import AnnouncementBar from "@/components/Annoucebar";
 
 export default function Home() {
   const [isPricingOpen, setIsPricingOpen] = useState(false);
