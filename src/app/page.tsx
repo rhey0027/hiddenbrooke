@@ -9,8 +9,9 @@ import PricingModal from "@/components/pricing";
 import Footer from "@/components/footer";
 import { ArrowDownCircle } from "lucide-react";
 import CarouselWindowResponsive from "@/components/carousel-window";
-import AnnouncementBar from "@/components/annoucebar";
+
 import MapSection from "@/components/map-section";
+import AnnouncementBar from "@/components/annoucebar";
 
 export default function Home() {
   const [isPricingOpen, setIsPricingOpen] = useState(false);
@@ -19,7 +20,6 @@ export default function Home() {
     <main className="min-h-screen bg-linear-to-br from-blue-50 via-white to-teal-50">
       <Navbar />
       <AnnouncementBar />
-
       {/* Hero Section with Carousel */}
       <section className="relative pt-16">
         {/* Option 1: Use Carousel with default images from the component */}
