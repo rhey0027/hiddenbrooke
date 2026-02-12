@@ -22,10 +22,6 @@ const Notfound = () => {
             why not try our simple memory booster game!
           </h1>
           <span className="text-lg font-light uppercase">MAISIP version 2</span>{" "}
-          <p className="font-extralight text-sm">
-            <code>just clicked the phone image to go directly</code>
-          </p>
-          <code>or type this in the address bar</code>
           <Link href="https:maisip-v3.vercel.app">
             <Image
               src="/logo/phonegame.png"
