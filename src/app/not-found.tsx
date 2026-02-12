@@ -4,7 +4,7 @@ import Link from "next/link";
 const Notfound = () => {
   return (
     <div className="min-h-screen bg-linear-to-br from-blue-300 to-violet-800">
-      <span className="flex items-center justify-center pt-35">
+      <span className="flex items-center justify-center pt-15">
         <Image
           src="/logo/brooke.png"
           width={100}
@@ -17,11 +17,32 @@ const Notfound = () => {
           This page is under development right now
         </code>
         <p className="font-medium text-lg">Sorry for the inconvenience</p>
-        <p className="font-medium mt-20 text-center">
+        <div className="p-4 flex flex-col items-center justify-center">
+          <h1 className="capitalize text-sm font-bold">
+            why not try our simple memory booster game!
+          </h1>
+          <span className="text-lg font-light uppercase">MAISIP version 2</span>{" "}
+          <p className="font-extralight text-sm">
+            <code>just clicked the phone image to go directly</code>
+          </p>
+          <code>or type this in the address bar</code>
+          <Link href="https:maisip-v3.vercel.app">
+            <Image
+              src="/logo/phonegame.png"
+              width={100}
+              height={300}
+              alt="phone logo game"
+            ></Image>
+          </Link>
+          <Link href="https://maisip-v3.vercel.app">
+            https://maisip-v3.vercel.app
+          </Link>
+        </div>
+        <p className="font-medium mt-5 text-center">
           Click nyo po ang Home Button pra bumalik sa Homepage. Salamat Po.
         </p>
       </div>
-      <div className="flex items-center justify-center mt-20">
+      <div className="flex items-center justify-center mt-5">
         <Link href="/">
           <button className="bg-violet-700 px-8 py-2 shadow-md rounded-md text-white cursor-pointer hover:scale-105 transition-all ease-in-out">
             Home

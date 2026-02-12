@@ -135,9 +135,9 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 mb-4 md:mb-0">
             {/* © 2024{new Date().getFullYear()} HiddenBrooke Resort All rights */}
-            © 2024 HiddenBrooke Resort All rights reserved. |{" "}
-            <span className="font-extralight text-sm text-orange-700">
-              RYU Web Developer / Programmer
+            © 2024 HiddenBrooke Resort All Rights Reserved. |{" "}
+            <span className="tracking-wider font-extralight text-sm text-orange-500">
+              <code>RYU | WebDev</code>
             </span>
           </p>
           <div className="flex items-center space-x-6 text-sm">

@@ -239,9 +239,9 @@ const CarouselWindowResponsive = ({
 
       {/* Fullscreen overlay text */}
       {isFullscreen && (
-        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-6 py-3 rounded-full backdrop-blur-sm z-20">
+        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 bg-black/50 text-white py-1 px-7 rounded-md backdrop-blur-sm z-20">
           <span className="text-sm">
-            Press ESC key or man click el maximize button para sale, Gracias!
+            Press ESC key, Gracias!
             {/* Press ESC or click the maximize button to exit */}
           </span>
         </div>
