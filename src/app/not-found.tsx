@@ -27,14 +27,14 @@ const Notfound = () => {
             MAISIP version 2
           </span>{" "}
           <p>Click the image to start playing...</p>
-          <div className="mt-2">
+          <div className="mt-2 cursor-pointer duration-200 hover:-translate-y-1.5">
             <Link href="https:maisip-v3.vercel.app">
               <Image
                 src="/logo/phonegame.png"
                 width={100}
                 height={300}
                 alt="phone logo game"
-                className="cursor-pointer duration-200 hover:-translate-y-1.5"
+                className="object-contain"
               ></Image>
             </Link>
             {/* <Link href="https://maisip-v3.vercel.app">
