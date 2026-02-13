@@ -34,9 +34,12 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Section */}
-          <div>
+          <div data-aos="fade-up">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-14 h-14 rounded-full bg-linear-to-br from-blue-400 to-teal-300 flex items-center justify-center">
+              <div
+                className="w-14 h-14 rounded-full bg-linear-to-br from-blue-400 to-teal-300 flex items-center justify-center"
+                data-aos="fade-up"
+              >
                 <span className="text-white font-bold text-2xl">
                   <Image
                     src="/logo/brooke.png"
@@ -72,7 +75,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div data-aos="fade-up">
             <h3 className="text-2xl font-bold mb-6 text-white">Quick Links</h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
@@ -90,7 +93,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div data-aos="fade-up">
             <h3 className="text-2xl font-bold mb-6 text-white">Contact Us</h3>
             <div className="space-y-4">
               {contactInfo.map((info, index) => (
@@ -107,7 +110,7 @@ const Footer = () => {
           </div>
 
           {/* Newsletter */}
-          <div>
+          <div data-aos="fade-up">
             <h3 className="text-2xl font-bold mb-6 text-white">Stay Updated</h3>
             <p className="text-gray-300 mb-4">
               Subscribe to our newsletter for exclusive offers and updates.
@@ -129,10 +132,16 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-white/20 my-12"></div>
+        <div
+          className="border-t border-white/20 my-12"
+          data-aos="fade-up"
+        ></div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div
+          className="flex flex-col md:flex-row justify-between items-center"
+          data-aos="fade-up"
+        >
           <p className="text-gray-400 mb-4 md:mb-0">
             {/* © 2024{new Date().getFullYear()} HiddenBrooke Resort All rights */}
             © 2024 HiddenBrooke Resort All Rights Reserved. |{" "}

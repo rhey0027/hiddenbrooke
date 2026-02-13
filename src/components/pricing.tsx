@@ -142,19 +142,19 @@ const PricingModal = ({ isOpen, onClose }: PricingModalProps) => {
               {/* Pricing Grid */}
               {/* 2. GRID OF 4 CARDS */}
               <div className="grid grid-cols-1  gap-6">
-                <div className="max-h-[55vh] overflow-y-auto p-5">
+                <div
+                  className="max-h-[55vh] overflow-y-auto p-5"
+                  data-aos="fade-up"
+                >
                   {pricingData.map((card) => (
                     <div
                       key={card.id}
                       className="border border-gray-100 rounded-2xl
-p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition"
+                              p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition"
                     >
                       <div>
                         <div className="flex justify-between items-start mb-4">
-                          <h3
-                            className="text-xl font-bold text-gray-
-800"
-                          >
+                          <h3 className="text-xl font-bold text-gray-800">
                             {card.type}
                           </h3>
                           <div className="text-right">
@@ -170,13 +170,9 @@ p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition"
                           {card.features.map((feat, i) => (
                             <li
                               key={i}
-                              className="flex items-center text-sm textgray-
-600"
+                              className="flex items-center text-sm textgray-600"
                             >
-                              <span
-                                className="w-1.5 h-1.5 bg-cyan-400 rounded-full
-mr-3"
-                              />
+                              <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full mr-3" />
                               {feat}
                             </li>
                           ))}
@@ -188,8 +184,7 @@ mr-3"
                           setSelectedGallery(card.gallery);
                           setPhotoIndex(0);
                         }}
-                        className="w-full py-3 bg-linear-to-br from-blue-800 via-blue-500 text-white font-semibold tracking-wider rounded-xl hover:opacity-90 transition shadow-md cursor-pointer
-active:scale-95"
+                        className="w-full py-3 bg-linear-to-br from-blue-800 via-blue-500 text-white font-semibold tracking-wider rounded-xl hover:opacity-90 transition shadow-md cursor-pointer active:scale-95"
                       >
                         View Images
                       </button>
@@ -200,10 +195,7 @@ active:scale-95"
             </div>
             {/* 3. THE LIGHTBOX POP-UP */}
             {selectedGallery && (
-              <div
-                className="fixed inset-0 z-100 bg-black/85 flex items-center
-justify-center p-4"
-              >
+              <div className="fixed inset-0 z-100 bg-black/85 flex items-center justify-center p-4">
                 {/* Close Button */}
                 <button
                   onClick={() => setSelectedGallery(null)}

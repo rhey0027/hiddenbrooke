@@ -16,7 +16,6 @@ import WaterLoader from "@/components/loader";
 
 export default function Home() {
   const [isPricingOpen, setIsPricingOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <main className="min-h-screen bg-linear-to-br from-blue-50 via-white to-teal-50">
