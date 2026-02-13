@@ -49,7 +49,7 @@ const Notfound = () => {
           Bumalik sa Homepage. Gracias.
         </p>
       </div>
-      <div className="flex items-center justify-center mt-5">
+      <div className="flex items-center justify-center">
         <Link href="/">
           <button className="bg-linear-to-r from bg-sky-300 to-blue-500 px-8 py-2 shadow-md rounded-full text-gray-200 cursor-pointer hover:scale-105 transition-all ease-in-out">
             Home
