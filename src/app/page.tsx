@@ -16,6 +16,7 @@ import WaterLoader from "@/components/loader";
 
 export default function Home() {
   const [isPricingOpen, setIsPricingOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <main className="min-h-screen bg-linear-to-br from-blue-50 via-white to-teal-50">
@@ -40,7 +41,7 @@ export default function Home() {
             onClick={() => setIsPricingOpen(true)}
             className="cursor-pointer bg-linear-to-r from-violet-800 to-orange-600 text-white font-bold text-md rounded-full shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 flex items-center space-x-2 md:px-8 md:py-4 px-2  group"
           >
-            <span className="px-4 py-2 md:text-lg">VIEW PRICING</span>
+            <span className="absolute px-4 py-2 md:text-lg">VIEW PRICING</span>
             <ArrowDownCircle className="group-hover:animate-bounce" size={24} />
           </motion.button>
         </div>

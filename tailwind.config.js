@@ -11,6 +11,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+    },
+    animation: {
+    'spin-slow': 'spin 3s linear infinite'
+    },
+    keyframes: {
+            spin: {
+              'from': { transform: 'rotate(0deg)' },
+              'to': { transform: 'rotate(360deg)' },
+            },
+          },
 keyframes: {
   drop: {
        '0%, 100%': { borderRadius: '50% 50% 50% 50% / 50% 50% 50% 50%' },
@@ -20,7 +30,7 @@ keyframes: {
 },
 animation: {
 'water-drop': 'drop 3s ease-in-out infinite',
-},
+
       fontFamily: {
         // 'script' becomes your new utility class: font-script
         // 'sans' can be extended too if needed globally
