@@ -26,24 +26,27 @@ const Notfound = () => {
           <span className="text-lg font-light capitalize mt-4">
             MAISIP version 2
           </span>{" "}
-          <p>Click the image to start playing...</p>
-          <div className="mt-2 cursor-pointer">
-            <Link href="https:maisip-v3.vercel.app">
-              <Image
-                src="/logo/phonegame.png"
-                width={100}
-                height={300}
-                alt="phone logo game"
-                className="object-contain"
-              ></Image>
-            </Link>
-            {/* <Link href="https://maisip-v3.vercel.app">
-            https://maisip-v3.vercel.app
-          </Link> */}
+          <div className="flex flex-col justify-center items-center mt-5 cursor-pointer">
+            <Image
+              src="/logo/phonegame.png"
+              width={100}
+              height={300}
+              alt="phone logo game"
+              className="object-contain"
+            ></Image>
+            <div className="flex flex-col">
+              <code>🚀 Play the game here</code>
+              <Link
+                href="https://maisip-v3.vercel.app"
+                className="underline py-2 text-blue-300 cursor-pointer"
+              >
+                https://maisip-v3.vercel.app
+              </Link>
+            </div>
           </div>
         </div>
         <p className="p-3 font-medium mt-5 text-center">
-          Click Home Button para bumalik sa Homepage. Gracias.
+          Bumalik sa Homepage. Gracias.
         </p>
       </div>
       <div className="flex items-center justify-center mt-5">
