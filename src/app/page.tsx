@@ -13,6 +13,7 @@ import CarouselWindowResponsive from "@/components/carousel-window";
 import MapSection from "@/components/MapSection";
 import AnnouncementBar from "@/components/Annoucebar";
 import WaterLoader from "@/components/loader";
+import VideoAai from "@/components/video-ai";
 
 export default function Home() {
   const [isPricingOpen, setIsPricingOpen] = useState(false);
@@ -22,6 +23,7 @@ export default function Home() {
       <WaterLoader />
       <Navbar />
       <AnnouncementBar />
+
       {/* Hero Section with Carousel */}
       <section className="relative pt-16">
         {/* Option 1: Use Carousel with default images from the component */}
@@ -53,6 +55,8 @@ export default function Home() {
       />
 
       {/* Map Section */}
+
+      <VideoAai />
       <MapSection />
       <div>{/* <PersistentReactionCounter /> */}</div>
       {/* Footer */}

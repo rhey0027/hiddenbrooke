@@ -146,7 +146,7 @@ const Footer = () => {
             {/* © 2024{new Date().getFullYear()} HiddenBrooke Resort All rights */}
             © 2024 HiddenBrooke Resort All Rights Reserved. |{" "}
             <span className="tracking-wider font-extralight text-sm text-orange-500">
-              <code>RYU | WebDev</code>
+              <code>Ryu fullStack WebDev</code>
             </span>
           </p>
           <div className="flex items-center space-x-6 text-sm">

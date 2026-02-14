@@ -28,7 +28,7 @@ export default function MapSection() {
   });
 
   return (
-    <section className="py-20 px-4 bg-linear-to-b from-white to-blue-50">
+    <section className="py-10 px-4 bg-linear-to-b from-white to-blue-50">
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
         <div className="text-center mb-16">
