@@ -3,7 +3,17 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { createClient } from "@supabase/supabase-js";
-import { Quote, Star, X, Loader2, MessageSquarePlus } from "lucide-react";
+import {
+  Quote,
+  Star,
+  X,
+  Loader2,
+  MessageSquarePlus,
+  Shield,
+  LogOut,
+  Trash2,
+} from "lucide-react";
+
 // ─── Supabase Client ─────────────────────────────────────────────────────────
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -31,13 +41,35 @@ const formatDate = (iso: string) =>
   });
 
 // ─── TestimonialCard ──────────────────────────────────────────────────────────
-function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+function TestimonialCard({
+  testimonial,
+  isAdmin,
+  onDelete,
+}: {
+  testimonial: Testimonial;
+  isAdmin: boolean;
+  onDelete: (id: string) => void;
+}) {
   const avatarSrc = testimonial.image_url || getAvatarUrl(testimonial.name);
 
   return (
     <div className="relative bg-white rounded-2xl p-6 shadow-sm border border-stone-100 hover:shadow-md transition-shadow duration-300 flex flex-col gap-4">
       {/* Quote icon */}
-      <Quote className="w-7 h-7 text-emerald-200 absolute top-5 right-5" />
+
+      {isAdmin && (
+        <Quote className="w-7 h-7 text-emerald-200 absolute top-5 right-5" />
+      )}
+      {/* Admin delete button */}
+
+      {isAdmin && (
+        <button
+          onClick={() => onDelete(testimonial.id)}
+          className="absolute top-4 right-4 p-1.5 rounded-lg text-red-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+          title="Delete review"
+        >
+          <Trash2 className="w-4 h-4" />
+        </button>
+      )}
 
       {/* Stars */}
       <div className="flex gap-0.5">
@@ -153,7 +185,7 @@ function AddTestimonialModal({
           onClick={onClose}
           className="absolute top-4 right-4 text-stone-400 hover:text-stone-600 transition-colors"
         >
-          <X className="w-5 h-5" />
+          <X className="w-5 h-5 cursor-pointer" />
         </button>
 
         <h2 className="text-xl font-bold text-stone-800 mb-1">
@@ -197,7 +229,7 @@ function AddTestimonialModal({
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Jane Smith"
+              placeholder="e.g. Rheanna Jane"
               required
               className="border border-stone-200 rounded-xl px-4 py-2.5 text-sm text-stone-800 placeholder:text-stone-300 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition"
             />
@@ -210,7 +242,7 @@ function AddTestimonialModal({
             <textarea
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              placeholder="Tell us about your experience..."
+              placeholder="Pabor man share di uste experience..."
               required
               rows={4}
               maxLength={400}
@@ -244,11 +276,138 @@ function AddTestimonialModal({
   );
 }
 
+// ---- Admin modal
+const ADMIN_PASSWORD =
+  process.env.NEXT_PUBLIC_ADMIN_PASSWORD ?? "hiddenbrooKe-admiN";
+
+function AdminLoginModal({
+  onClose,
+  onSuccess,
+}: {
+  onClose: () => void;
+  onSuccess: () => void;
+}) {
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === ADMIN_PASSWORD) {
+      onSuccess();
+      onClose();
+    } else {
+      setError(true);
+      setPassword("");
+    }
+  };
+
+  return (
+    <div
+      className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      onClick={(e) => e.target === e.currentTarget && onClose()}
+    >
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-8 relative">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-stone-400 hover:text-stone-600 transition-colors"
+        >
+          <X className="w-5 h-5 cursor-pointer" />
+        </button>
+
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center ">
+            <Shield className="w-5 h-5 text-emerald-700" />
+          </div>
+          <div>
+            <h2 className="text-lg font-bold text-stone-800">Admin Access</h2>
+            <p className="text-stone-400 text-xs">
+              Enter password to manage reviews
+            </p>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setError(false);
+            }}
+            placeholder="Admin password"
+            autoFocus
+            className={`border rounded-xl px-4 py-2.5 text-sm text-stone-800 placeholder:text-stone-300 focus:outline-none focus:ring-2 transition ${
+              error
+                ? "border-red-300 focus:ring-red-300"
+                : "border-stone-200 focus:ring-emerald-400"
+            }`}
+          />
+          {error && (
+            <p className="text-red-500 text-xs -mt-2">
+              Incorrect password. Try again.
+            </p>
+          )}
+          <button
+            type="submit"
+            className="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl py-2.5 text-sm transition-colors"
+          >
+            Unlock
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+// ─── Confirm Delete Modal ─────────────────────────────────────────────────────
+function ConfirmDeleteModal({
+  onConfirm,
+  onCancel,
+  loading,
+}: {
+  onConfirm: () => void;
+  onCancel: () => void;
+  loading: boolean;
+}) {
+  return (
+    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-8">
+        <h2 className="text-lg font-bold text-stone-800 mb-2">
+          Delete Review?
+        </h2>
+        <p className="text-stone-500 text-sm mb-6">
+          This action cannot be undone. The review will be permanently removed.
+        </p>
+        <div className="flex gap-3">
+          <button
+            onClick={onCancel}
+            disabled={loading}
+            className="flex-1 border border-stone-200 text-stone-600 hover:bg-stone-50 font-medium rounded-xl py-2.5 text-sm transition-colors"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={onConfirm}
+            disabled={loading}
+            className="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl py-2.5 text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
+          >
+            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Delete"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Main Page ────────────────────────────────────────────────────────────────
 export default function TestimonialsPage() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [showAdminLogin, setShowAdminLogin] = useState(false);
+  const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -264,6 +423,14 @@ export default function TestimonialsPage() {
 
   const handleNewTestimonial = (t: Testimonial) => {
     setTestimonials((prev) => [t, ...prev]);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (!deleteTarget) return;
+    setDeleteLoading(true);
+    await supabase.from("testimonials").delete().eq("id", deleteTarget);
+    setDeleteLoading(false);
+    setDeleteTarget(null);
   };
 
   return (
@@ -282,12 +449,39 @@ export default function TestimonialsPage() {
         </p>
         <button
           onClick={() => setShowModal(true)}
-          className="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-colors shadow-sm"
+          className="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-colors shadow-sm cursor-pointer"
         >
           <MessageSquarePlus className="w-4 h-4" />
           Write a Review
         </button>
+
+        {/* Admin toggle */}
+
+        {isAdmin ? (
+          <button
+            onClick={() => setIsAdmin(false)}
+            className="inline-flex items-center gap-2 border border-stone-200 text-stone-500 hover:text-stone-700 hover:bg-stone-100 px-4 py-3 rounded-xl text-sm transition-colors"
+            title="Exit Admin Mode"
+          >
+            <LogOut className="w-4 h-4" />
+            Exit Admin
+          </button>
+        ) : (
+          <button
+            onClick={() => setShowAdminLogin(true)}
+            className="inline-flex items-center gap-2 border border-stone-200 text-stone-400 hover:text-stone-600 hover:bg-stone-100 px-4 py-3 rounded-xl text-sm transition-colors ml-2"
+            title="Admin login"
+          >
+            <Shield className="w-4 h-4 cursor-pointer hover:text-red-500 duration-150 transition-all" />
+          </button>
+        )}
       </div>
+
+      {isAdmin && (
+        <p className="mt-4 text-xs text-emerald-700 font-medium">
+          Admin mode active — click the trash icon on any card to delete it.
+        </p>
+      )}
 
       {/* Cards Grid — scrollable container */}
       {loading ? (
@@ -303,7 +497,12 @@ export default function TestimonialsPage() {
           {/* Scrollable card grid: shows ~5-6 cards, scrolls vertically */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-h-680px overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-stone-200 scrollbar-track-transparent">
             {testimonials.map((t) => (
-              <TestimonialCard key={t.id} testimonial={t} />
+              <TestimonialCard
+                key={t.id}
+                testimonial={t}
+                isAdmin={isAdmin}
+                onDelete={() => setDeleteTarget(t.id)}
+              />
             ))}
           </div>
           <p className="text-center text-stone-400 text-xs mt-6">
@@ -317,6 +516,20 @@ export default function TestimonialsPage() {
         <AddTestimonialModal
           onClose={() => setShowModal(false)}
           onSuccess={handleNewTestimonial}
+        />
+      )}
+      {showAdminLogin && (
+        <AdminLoginModal
+          onClose={() => setShowAdminLogin(false)}
+          onSuccess={() => setIsAdmin(true)}
+        />
+      )}
+
+      {deleteTarget && (
+        <ConfirmDeleteModal
+          onConfirm={handleDeleteConfirm}
+          onCancel={() => setDeleteTarget(null)}
+          loading={deleteLoading}
         />
       )}
     </section>
