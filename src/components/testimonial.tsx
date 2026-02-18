@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
-import { MessageSquarePlus, X, Loader2, Star, Quote } from "lucide-react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-
+import { createClient } from "@supabase/supabase-js";
+import { Quote, Star, X, Loader2, MessageSquarePlus } from "lucide-react";
 // ─── Supabase Client ─────────────────────────────────────────────────────────
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
