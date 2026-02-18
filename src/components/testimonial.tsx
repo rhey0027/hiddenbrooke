@@ -409,16 +409,18 @@ export default function TestimonialsPage() {
   const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
   const [deleteLoading, setDeleteLoading] = useState(false);
 
+  const fetchTestimonials = async () => {
+    const { data } = await supabase
+      .from("testimonials")
+      .select("*")
+      .order("created_at", { ascending: false });
+    setTestimonials((data as Testimonial[]) || []);
+    setLoading(false);
+  };
   useEffect(() => {
-    const fetchTestimonials = async () => {
-      const { data } = await supabase
-        .from("testimonials")
-        .select("*")
-        .order("created_at", { ascending: false });
-      setTestimonials((data as Testimonial[]) || []);
-      setLoading(false);
-    };
-    fetchTestimonials();
+    setTimeout(() => {
+      fetchTestimonials();
+    }, 1000); // simulate loading delay
   }, []);
 
   const handleNewTestimonial = (t: Testimonial) => {
@@ -428,7 +430,13 @@ export default function TestimonialsPage() {
   const handleDeleteConfirm = async () => {
     if (!deleteTarget) return;
     setDeleteLoading(true);
-    await supabase.from("testimonials").delete().eq("id", deleteTarget);
+    const { error } = await supabase
+      .from("testimonials")
+      .delete()
+      .eq("id", deleteTarget);
+    if (!error) {
+      await fetchTestimonials(); // refresh list after deletion
+    }
     setDeleteLoading(false);
     setDeleteTarget(null);
   };
