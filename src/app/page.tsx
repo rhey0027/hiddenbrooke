@@ -14,6 +14,7 @@ import MapSection from "@/components/MapSection";
 import AnnouncementBar from "@/components/Annoucebar";
 import WaterLoader from "@/components/loader";
 import VideoAai from "@/components/video-ai";
+import TestimonialsPage from "./testimonials/page";
 
 export default function Home() {
   const [isPricingOpen, setIsPricingOpen] = useState(false);
@@ -60,6 +61,7 @@ export default function Home() {
       <MapSection />
       <div>{/* <PersistentReactionCounter /> */}</div>
       {/* Footer */}
+      <TestimonialsPage />
       <Footer />
     </main>
   );
