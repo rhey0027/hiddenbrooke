@@ -530,6 +530,9 @@ export default function TestimonialsPage() {
             {testimonials.length > 6 && (
               <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-20 bg-linear-to-t from-white to-transparent" />
             )}
+            <p className="text-center text-stone-500 text-sm mt-2">
+              Scroll to see more...
+            </p>
           </div>
 
           <p className="text-center text-stone-400 text-xs mt-6">
