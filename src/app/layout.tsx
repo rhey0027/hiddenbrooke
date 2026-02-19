@@ -6,7 +6,7 @@ import {
   Style_Script,
 } from "next/font/google";
 import "./globals.css";
-import { head } from "framer-motion/client";
+// import { head } from "framer-motion/client";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,7 +30,7 @@ const styleScript = Style_Script({
   weight: "400",
   variable: "--font-style-script",
 });
-<meta name="apple-mobile-web-app-title" content="Hiddenbrooke" />;
+<meta name="mobile-web-app-title" content="Hiddenbrooke" />;
 
 export const metadata: Metadata = {
   manifest: "/manifest.json",

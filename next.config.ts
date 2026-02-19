@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
+import withPWA from "@ducanh2912/next-pwa";
 
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
+    formats: ["image/avif", "image/webp"],
     qualities: [75, 80],
     remotePatterns: [
       {
@@ -12,6 +14,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
+  turbopack: {},
 };
-
-export default nextConfig;
+export default withPWA({
+  dest: "public",
+  register: true,
+  disable: process.env.NODE_ENV === "development",
+})(nextConfig);

@@ -7,9 +7,9 @@ export const navItems = [
 ];
 
 export const LOCAL_IMAGES = [
-  //   "/images/pic2.jpg",
-  //   "/images/pic3.jpg",
   "/images/pic1.jpg",
+  "/images/pic2.jpg",
+  "/images/pic3.jpg",
   "/images/pic4.jpg",
   "/images/pic5.jpg",
   "/images/pic6.jpg",
