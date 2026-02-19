@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import SimpleCounter from "./visitor-counter";
 
 const Footer = () => {
   const quickLinks = ["About Us", "Rooms", "Events", "Gallery"];
@@ -45,7 +44,7 @@ const Footer = () => {
                     src="/logo/brooke.png"
                     width={50}
                     height={50}
-                    alt="log"
+                    alt="logo icon"
                   />
                 </span>
               </div>
@@ -174,8 +173,6 @@ const Footer = () => {
             <Heart size={16} className="mx-2 text-red-400 animate-pulse" />
             for our valued guests
           </p>
-
-          <SimpleCounter />
         </div>
       </div>
     </footer>
