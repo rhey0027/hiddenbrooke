@@ -1,51 +1,70 @@
-// app/components/SimpleCounter.tsx
 "use client";
 
 import { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
+import { Users } from "lucide-react";
 
-export default function SimpleCounter() {
-  const [count, setCount] = useState(0);
+// ─── Supabase Client ──────────────────────────────────────────────────────────
+// Re-use your existing client if you have a lib/supabase.ts — replace this
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+);
+
+const SESSION_KEY = "hiddenbrooke_visited";
+
+export default function VisitorCounter() {
+  const [count, setCount] = useState<number | null>(null);
 
   useEffect(() => {
-    const fetchCount = async () => {
-      try {
-        const response = await fetch("/api/visitors");
-        const data = await response.json();
-        setCount(data.totalVisits || 0);
-      } catch (error) {
-        // Fallback to localStorage
-        const stored = localStorage.getItem("visitCount");
-        if (stored) {
-          setCount(parseInt(stored));
+    const run = async () => {
+      const alreadyVisited = sessionStorage.getItem(SESSION_KEY);
+
+      if (!alreadyVisited) {
+        // New session — increment in Supabase via RPC
+        const { data, error } = await supabase.rpc("increment_visitors");
+        if (!error && data != null) {
+          setCount(data as number);
+        } else {
+          // Fallback: just read current count
+          const { data: row } = await supabase
+            .from("visitors")
+            .select("count")
+            .eq("id", 1)
+            .single();
+          if (row) setCount(row.count);
         }
+        sessionStorage.setItem(SESSION_KEY, "1");
+      } else {
+        // Returning tab — just read the count
+        const { data: row } = await supabase
+          .from("visitors")
+          .select("count")
+          .eq("id", 1)
+          .single();
+        if (row) setCount(row.count);
       }
     };
 
-    const updateCount = () => {
-      const newCount = count + 1;
-      setCount(newCount);
-      localStorage.setItem("visitCount", newCount.toString());
-
-      // Send to API
-      fetch("/api/visitors", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "increment" }),
-      });
-    };
-
-    fetchCount();
-    updateCount();
+    run();
   }, []);
 
+  // Don't render until we have a count
+  if (count === null) return null;
+
   return (
-    <div className="fixed bottom-18 right-4 z-50">
-      <div className="bg-white opacity-50 rounded-full shadow-lg px-4 py-2 flex items-center gap-2 border border-gray-200">
-        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-        <span className="text-sm font-medium text-gray-700">
-          Visitors: <span className="font-bold text-blue-600">{count}</span>
-        </span>
-      </div>
+    <div className="absolute top-3 left-1/2 transform -translate-x-1/2 flex items-center gap-2 bg-black/50 max-w-38 rounded-full px-6 py-1 shadow-md text-sm text-stone-600">
+      <span className="relative flex h-2 w-2">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+      </span>
+      <Users className="w-4 h-4 text-emerald-600" />
+      <span className="text-white/70">
+        <code className="font-semibold text-lg text-orange-400">
+          {count.toLocaleString()}
+        </code>{" "}
+        Visitor{count !== 1 ? "s" : ""}
+      </span>
     </div>
   );
 }

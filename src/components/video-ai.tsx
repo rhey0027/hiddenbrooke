@@ -13,6 +13,7 @@ export default function VideoAai() {
       >
         Ai Tour Guide
       </button>
+
       {show && (
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/60 rounded-lg bg-opacity-75">
           <div className="bg-transparent p-2 rounded lg relative">

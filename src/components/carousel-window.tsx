@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { CarouselWindowResponsiveProps } from "@/types/types";
 import { LOCAL_IMAGES } from "@/def/definition";
+import VisitorCounter from "./visitor-counter";
 
 const CarouselWindowResponsive = ({
   images: customImages,
@@ -201,6 +202,7 @@ const CarouselWindowResponsive = ({
               />
             ))}
           </div>
+          <VisitorCounter />
           {/* Hero Content */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10 px-7">
             <motion.div

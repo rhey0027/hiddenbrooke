@@ -53,11 +53,11 @@ function TestimonialCard({
   const avatarSrc = testimonial.image_url || getAvatarUrl(testimonial.name);
 
   return (
-    <div className="relative bg-white rounded-2xl p-6 shadow-sm border border-stone-100 hover:shadow-md transition-shadow duration-300 flex flex-col gap-4">
+    <div className="relative bg-white rounded-2xl p-6 shadow-md border border-stone-100 hover:shadow-sm transition-shadow duration-300 flex flex-col gap-4">
       {/* Quote icon */}
 
       {isAdmin && (
-        <Quote className="w-7 h-7 text-emerald-200 absolute top-5 right-5" />
+        <Quote className="w-5 h-5 text-emerald-200 absolute top-5 right-5" />
       )}
       {/* Admin delete button */}
 
@@ -188,7 +188,7 @@ function AddTestimonialModal({
           <X className="w-5 h-5 cursor-pointer" />
         </button>
 
-        <h2 className="text-xl font-bold text-stone-800 mb-1">
+        <h2 className="text-xl font-bold text-stone-800 mb-1 capitalize">
           {/* Share Your Experience */}
           Comparti el di uste experiencia
         </h2>
@@ -242,7 +242,7 @@ function AddTestimonialModal({
             <textarea
               value={comment}
               onChange={(e) => setComment(e.target.value)}
-              placeholder="Pabor man share di uste experience..."
+              placeholder="Pabor man share di uste experiencia..."
               required
               rows={4}
               maxLength={400}
@@ -262,12 +262,12 @@ function AddTestimonialModal({
           <button
             type="submit"
             disabled={loading}
-            className="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl py-3 text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
+            className="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl py-3 text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer "
           >
             {loading ? (
               <Loader2 className="w-4 h-4 animate-spin" />
             ) : (
-              "Submit Review"
+              "Envia mi review"
             )}
           </button>
         </form>
@@ -309,7 +309,7 @@ function AdminLoginModal({
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-8 relative">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-stone-400 hover:text-stone-600 transition-colors"
+          className="absolute top-4 right-4 text-stone-400 hover:text-red-600 transition-colors"
         >
           <X className="w-5 h-5 cursor-pointer" />
         </button>
@@ -334,7 +334,7 @@ function AdminLoginModal({
               setPassword(e.target.value);
               setError(false);
             }}
-            placeholder="Admin password"
+            placeholder="Authorization Code"
             autoFocus
             className={`border rounded-xl px-4 py-2.5 text-sm text-stone-800 placeholder:text-stone-300 focus:outline-none focus:ring-2 transition ${
               error
@@ -344,12 +344,12 @@ function AdminLoginModal({
           />
           {error && (
             <p className="text-red-500 text-xs -mt-2">
-              Incorrect password. Try again.
+              Authorization Code Required!.
             </p>
           )}
           <button
             type="submit"
-            className="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl py-2.5 text-sm transition-colors"
+            className="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-xl py-2.5 text-sm transition-colors cursor-pointer"
           >
             Unlock
           </button>
@@ -382,14 +382,14 @@ function ConfirmDeleteModal({
           <button
             onClick={onCancel}
             disabled={loading}
-            className="flex-1 border border-stone-200 text-stone-600 hover:bg-stone-50 font-medium rounded-xl py-2.5 text-sm transition-colors"
+            className="flex-1 border border-stone-200 text-stone-600 hover:bg-stone-50 font-medium rounded-xl py-2.5 text-sm transition-colors cursor-pointer"
           >
             Cancel
           </button>
           <button
             onClick={onConfirm}
             disabled={loading}
-            className="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl py-2.5 text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
+            className="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl py-2.5 text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer"
           >
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Delete"}
           </button>
@@ -442,13 +442,13 @@ export default function TestimonialsPage() {
   };
 
   return (
-    <section className="min-h-screen bg-stone-50 py-10 px-4">
+    <section className="min-h-screen bg-green-50 py-10 px-4">
       {/* Header */}
       <div className="max-w-5xl mx-auto mb-12 text-center">
-        <p className="text-emerald-700 font-bold tracking-widest text-4xl mb-3 font-[Style_Script]">
+        <p className="text-emerald-700 font-bold tracking-widest text-5xl mb-3 text-shadow-sm font-[Style_Script]">
           Guest Reviews
         </p>
-        <h1 className="font-[Style_Script]text-4xl font-bold text-stone-800 mb-4">
+        <h1 className="text-lg font-bold text-stone-800 mb-4">
           What Our Guests Say
         </h1>
         <p className="text-stone-500 max-w-xl mx-auto text-sm leading-relaxed mb-8">
@@ -468,7 +468,7 @@ export default function TestimonialsPage() {
         {isAdmin ? (
           <button
             onClick={() => setIsAdmin(false)}
-            className="inline-flex items-center gap-2 border border-stone-200 text-stone-500 hover:text-stone-700 hover:bg-stone-100 px-4 py-3 rounded-xl text-sm transition-colors"
+            className="inline-flex items-center gap-2 border border-stone-200 text-stone-500 hover:text-red-500 hover:bg-stone-100 px-4 py-3 rounded-xl text-sm transition-colors cursor-pointer"
             title="Exit Admin Mode"
           >
             <LogOut className="w-4 h-4" />
@@ -477,7 +477,7 @@ export default function TestimonialsPage() {
         ) : (
           <button
             onClick={() => setShowAdminLogin(true)}
-            className="inline-flex items-center gap-2 border border-stone-200 text-stone-400 hover:text-stone-600 hover:bg-stone-100 px-4 py-3 rounded-xl text-sm transition-colors ml-2"
+            className="inline-flex items-center gap-2 border border-green-700 text-stone-400 hover:text-stone-600 hover:bg-stone-100 px-4 py-3 rounded-xl text-sm transition-colors ml-2"
             title="Admin login"
           >
             <Shield className="w-4 h-4 cursor-pointer hover:text-red-500 duration-150 transition-all" />

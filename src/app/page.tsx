@@ -62,6 +62,7 @@ export default function Home() {
       <div>{/* <PersistentReactionCounter /> */}</div>
       {/* Footer */}
       <TestimonialsPage />
+
       <Footer />
     </main>
   );
