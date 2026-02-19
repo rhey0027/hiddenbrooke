@@ -511,16 +511,27 @@ export default function TestimonialsPage() {
       ) : (
         <div className="max-w-5xl mx-auto">
           {/* Scrollable card grid: shows ~5-6 cards, scrolls vertically */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-h-680px overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-stone-200 scrollbar-track-transparent">
-            {testimonials.map((t) => (
-              <TestimonialCard
-                key={t.id}
-                testimonial={t}
-                isAdmin={isAdmin}
-                onDelete={() => setDeleteTarget(t.id)}
-              />
-            ))}
+
+          <div className="relative">
+            <div
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-h-380px overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-stone-200 scrollbar-track-transparent"
+              style={{ maxHeight: "680px" }}
+            >
+              {testimonials.map((t) => (
+                <TestimonialCard
+                  key={t.id}
+                  testimonial={t}
+                  isAdmin={isAdmin}
+                  onDelete={() => setDeleteTarget(t.id)}
+                />
+              ))}
+            </div>
+            {/* fade gradient at bottom to hint more to scroll */}
+            {testimonials.length > 6 && (
+              <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-20 bg-linear-to-t from-white to-transparent" />
+            )}
           </div>
+
           <p className="text-center text-stone-400 text-xs mt-6">
             {testimonials.length} review{testimonials.length !== 1 ? "s" : ""}
           </p>
