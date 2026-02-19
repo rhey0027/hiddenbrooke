@@ -13,6 +13,7 @@ import {
   LogOut,
   Trash2,
 } from "lucide-react";
+import { compressImage } from "@/utils/compress-image";
 
 // ─── Supabase Client ─────────────────────────────────────────────────────────
 const supabase = createClient(
@@ -122,10 +123,17 @@ function AddTestimonialModal({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    setImageFile(file);
+
+    // Compress before uploading
+    const compressed = await compressImage(file, {
+      maxWidthOrHeight: 200,
+      quality: 0.8, //80% quality for JPEG
+    });
+
+    setImageFile(compressed);
     setImagePreview(URL.createObjectURL(file));
   };
 

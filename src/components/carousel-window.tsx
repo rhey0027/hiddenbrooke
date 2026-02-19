@@ -157,9 +157,10 @@ const CarouselWindowResponsive = ({
           {/* Top Controls */}
           <div className="absolute top-4 left-8 right-8 flex justify-between items-center z-20">
             {/* Slide Counter */}
-            <div className="bg-black/50 text-white px-3 py-1.5 rounded-full text-sm backdrop-blur-sm">
+            <VisitorCounter />
+            {/* <div className="bg-black/50 text-white px-3 py-1.5 rounded-full text-sm backdrop-blur-sm">
               {currentIndex + 1} : {images.length}
-            </div>
+            </div> */}
 
             {/* Control Buttons */}
             <div className="flex gap-4">
@@ -202,7 +203,6 @@ const CarouselWindowResponsive = ({
               />
             ))}
           </div>
-          <VisitorCounter />
           {/* Hero Content */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10 px-7">
             <motion.div
@@ -225,15 +225,15 @@ const CarouselWindowResponsive = ({
                 Experimenta el lujo entre lo mejor de la naturaleza. Un refugio
                 donde la serenidad se encuentra con la elegancia
               </p>
-              <div className="flex items-center justify-center space-x-4 py-20 text-lg">
+              {/* <div className="flex items-center justify-center space-x-4 py-20 text-lg">
                 <span className="flex items-center">
                   <span className="w-3 h-3 bg-green-400  rounded-full mr-2 animate-pulse"></span>
                   <p className="text-sm">
                     Currently Viewing: Photo {currentIndex + 1}
-                    {/* Mirando la foto este momento: Foto {currentIndex + 1} */}
+                    Mirando la foto este momento: Foto {currentIndex + 1}
                   </p>
                 </span>
-              </div>
+              </div> */}
             </motion.div>
           </div>
         </>
