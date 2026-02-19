@@ -53,7 +53,7 @@ export default function VisitorCounter() {
   if (count === null) return null;
 
   return (
-    <div className="absolute top-3 left-1/2 transform -translate-x-1/2 flex items-center gap-2 bg-black/50 max-w-38 rounded-full px-6 py-1 shadow-md text-sm text-stone-600">
+    <div className="absolute left-27 top-13 transform -translate-x-1/2 flex items-center gap-2 bg-black/50 max-w-38 rounded-full px-6 py-1 shadow-md text-sm text-stone-600">
       <span className="relative flex h-2 w-2">
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
