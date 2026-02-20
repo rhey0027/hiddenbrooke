@@ -14,6 +14,7 @@ import {
   Trash2,
 } from "lucide-react";
 import { compressImage } from "@/utils/compress-image";
+import ReactionButtons from "./reaction-button";
 
 // ─── Supabase Client ─────────────────────────────────────────────────────────
 const supabase = createClient(
@@ -28,6 +29,8 @@ interface Testimonial {
   comment: string;
   image_url: string | null;
   created_at: string;
+  hearts: number;
+  thumbs_up: number;
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -83,6 +86,11 @@ function TestimonialCard({
       <p className="text-stone-600 text-sm leading-relaxed flex-1">
         {testimonial.comment}
       </p>
+      <ReactionButtons
+        reviewId={testimonial.id}
+        initialHearts={testimonial.hearts}
+        initialThumbsUp={testimonial.thumbs_up}
+      />
 
       {/* Author */}
       <div className="flex items-center gap-3 pt-2 border-t border-stone-100">
@@ -322,15 +330,17 @@ function AdminLoginModal({
           <X className="w-5 h-5 cursor-pointer" />
         </button>
 
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex flex-col items-center gap-3 mb-6">
           <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center ">
-            <Shield className="w-5 h-5 text-emerald-700" />
+            <Shield className="w-15 h-15 text-emerald-700" />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-stone-800">Admin Access</h2>
-            <p className="text-stone-400 text-xs">
+            <h2 className="text-lg font-bold text-red-500 animate-pulse">
+              Authorization Key Required
+            </h2>
+            {/* <p className="text-stone-400 text-xs">
               Enter password to manage reviews
-            </p>
+            </p> */}
           </div>
         </div>
 
@@ -351,8 +361,8 @@ function AdminLoginModal({
             }`}
           />
           {error && (
-            <p className="text-red-500 text-xs -mt-2">
-              Authorization Code Required!.
+            <p className="text-red-500 text-center text-xs -mt-2">
+              Authorization key from Maximus.
             </p>
           )}
           <button
@@ -530,7 +540,7 @@ export default function TestimonialsPage() {
             {testimonials.length > 6 && (
               <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-20 bg-linear-to-t from-white to-transparent" />
             )}
-            <p className="text-center text-stone-500 text-sm mt-2">
+            <p className="text-center text-gray-600 text-md mt-3">
               Scroll to see more...
             </p>
           </div>
