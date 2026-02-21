@@ -9,4 +9,6 @@ export interface Testimonial {
   content: string;
   image_url: string;
   created_at: string;
+  hearts: number;
+  thumbs_up: number;
 }

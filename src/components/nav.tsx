@@ -30,7 +30,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className="flex flex-col">
-              <h1 className="font-['Style_Script'] text-yellow-300 text-3xl font-semibold tracking-widest">
+              <h1 className="font-[Style_Script] text-yellow-300 text-3xl font-semibold tracking-widest">
                 HiddenBrooke
               </h1>
               {/* <p className="text-xs text-blue-100 font-light tracking-widest">

@@ -1,7 +1,14 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap"); */
+
 @import "tailwindcss";
 @tailwind utilities;
 
-
+@theme {
+  --font-family-inter: var(--font-inter);
+  --font-family-great-vibes: var(--font-great-vibes);
+  --font-family-styleScript: var(--font-styleScript);
+  --font-family-robotoMono: var(--font-robotoMono);
+}
 
 /* Add to your globals.css */
 .leaflet-container {
@@ -27,10 +34,3 @@
 .custom-marker-icon:hover {
   transform: scale(1.1);
 }
-
-
-
-
-
-
-

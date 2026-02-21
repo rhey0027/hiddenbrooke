@@ -6,6 +6,7 @@ import {
   Style_Script,
 } from "next/font/google";
 import "./globals.css";
+import ChatWidget from "@/components/chatbot";
 // import { head } from "framer-motion/client";
 
 const inter = Inter({
@@ -56,7 +57,10 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Hiddenbrooke" />
       </head>
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        {children}
+        <ChatWidget />
+      </body>
     </html>
   );
 }

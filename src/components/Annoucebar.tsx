@@ -21,7 +21,7 @@ const AnnouncementBar = () => {
         {[...Array(3)].map((_, i) => (
           <div key={i} className="flex items-center space-x-4 text-white">
             <Droplets className="w-5 h-5 text-blue-300 animate-pulse" />
-            <span className="text-lg font-semibold tracking-wider">
+            <span className="text-md font-semibold tracking-wider">
               Come visit and enjoy an infinite fresh running water -----{" "}
               <span className="font-light text-green-400 animate-pulse">
                 watch out! Mobile app is coming soon for your convenience...

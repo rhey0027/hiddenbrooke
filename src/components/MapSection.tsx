@@ -67,7 +67,8 @@ export default function MapSection() {
           <div className="lg:col-span-2 space-y-8">
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
               <h2
-                className="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3"
+                className="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3 font-great-vibes"
+                // style={{ fontFamily: "var(--font-great-vibes)" }}//inline style
                 data-aos="fade-up"
               >
                 <Navigation className="w-8 h-8 text-blue-600" />

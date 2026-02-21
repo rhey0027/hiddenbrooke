@@ -1,5 +1,6 @@
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
+
 import tailwindScrollbar from "tailwind-scrollbar";
 
 module.exports = {
@@ -28,11 +29,6 @@ module.exports = {
 
     animation: {
       "water-drop": "drop 3s ease-in-out infinite",
-
-      fontFamily: {
-        // 'script' becomes your new utility class: font-script
-        // 'sans' can be extended too if needed globally
-      },
     },
   },
   plugins: [tailwindScrollbar],
