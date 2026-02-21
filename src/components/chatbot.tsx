@@ -131,7 +131,7 @@ export default function ChatWidget() {
         {
           role: "assistant",
           content:
-            "Oops! Something went wrong. Please try again or contact us directly. 🙏",
+            "Oops! Sorry for now, I'm still under development.My boss Maximus still finalizing everything. kindly contact us directly at 09758569236 . 🙏",
         },
       ]);
     } finally {
@@ -185,7 +185,7 @@ export default function ChatWidget() {
               <div className="flex items-center gap-1.5 mt-0.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
                 <p className="text-emerald-100 text-xs">
-                  24/7 yaya at your service
+                  24/7 lifeguard at your service
                 </p>
               </div>
             </div>
@@ -320,7 +320,7 @@ export default function ChatWidget() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask anything about the resort..."
+              placeholder="still under development..."
               disabled={loading}
               className="flex-1 text-sm px-4 py-2.5 rounded-full border border-stone-200 outline-none transition-all"
               style={{ fontFamily: "inherit" }}
