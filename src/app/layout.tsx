@@ -6,7 +6,7 @@ import {
   Style_Script,
 } from "next/font/google";
 import "./globals.css";
-import ChatWidget from "@/components/chatbot";
+import TawkChat from "@/components/tawk-chat";
 // import { head } from "framer-motion/client";
 
 const inter = Inter({
@@ -59,7 +59,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} antialiased`}>
         {children}
-        <ChatWidget />
+        <TawkChat />
       </body>
     </html>
   );
